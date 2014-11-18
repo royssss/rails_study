@@ -26,7 +26,7 @@ class WelcomeController < ApplicationController
 
   def post_upload #post method
     uploaded_io = params[:picture]
-    File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+    File.open(Rails.root.join('public', 'uploads','abc.jpg'), 'wb') do |file|
       file.write(uploaded_io.read)
     end
     respond_to do |format|
@@ -35,6 +35,17 @@ class WelcomeController < ApplicationController
       }
     end
   end
+  #def post_upload #post method
+    #uploaded_io = params[:picture]
+    #File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+      #file.write(uploaded_io.read)
+    #end
+    #respond_to do |format|
+      #format.json {
+        #render :json=> {:a=>'a'}
+      #}
+    #end
+  #end
   #操作file 创建，修改，删除文件和文件夹
   def file
     #File.new("/Users/apple/Sites/rails_test_two/testfile", "w+")
@@ -81,5 +92,34 @@ class WelcomeController < ApplicationController
       }
     end
   end
+  
+  def redirect
+    flash[:notice] = "You have successfully logged out."
+    redirect_to root_url
+  end
+  
+  def cookie
+    if cookies[:renren]
+      cookie = cookies[:renren]
+    else
+      cookie = 222
+      cookies[:renren] = cookie
+    end
+    respond_to do |format|
+      format.json {
+        render :json=> {:b=>123,:cookie=>cookie}
+      }
+    end
+  end
+
+  def response_format
+    products = Product.all
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render xml: products}
+      format.json { render json: products}
+    end
+  end
+  
 
 end

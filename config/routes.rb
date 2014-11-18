@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   post 'post_upload'=>'welcome#post_upload',:defaults => { :format => 'json' }
   get 'file'=>'welcome#file',:defaults => { :format => 'json' }
   get 'ac'=>'welcome#ac',:defaults => { :format => 'json' }
+  get 'redirect'=>'welcome#redirect',:defaults => { :format => 'json' }
+  get 'cookie'=>'welcome#cookie',:defaults => { :format => 'json' }
+  get 'response_format'=>'welcome#response_format',:defaults => { :format => 'xml' }
+  
 
 
   resources :articles
