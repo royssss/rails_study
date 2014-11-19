@@ -120,6 +120,22 @@ class WelcomeController < ApplicationController
       format.json { render json: products}
     end
   end
+  #request object test
+  def req
+    respond_to do |format|
+      format.xml  { 
+        render :xml=>{:ip=>request.remote_ip,:url=>request.url,:method=>request.method} 
+      }
+    end
+  end
   
+  #response object test
+  def resp
+    respond_to do |format|
+      format.xml  { 
+        render :xml=>{:status=>response.status} 
+      }
+    end
+  end
 
 end

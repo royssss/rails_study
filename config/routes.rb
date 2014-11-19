@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'redirect'=>'welcome#redirect',:defaults => { :format => 'json' }
   get 'cookie'=>'welcome#cookie',:defaults => { :format => 'json' }
   get 'response_format'=>'welcome#response_format',:defaults => { :format => 'xml' }
+  get 'req'=>'welcome#req',:defaults => { :format => 'xml' }
+  get 'resp'=>'welcome#resp',:defaults => { :format => 'xml' }
   
 
 
