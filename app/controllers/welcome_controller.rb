@@ -147,5 +147,36 @@ class WelcomeController < ApplicationController
               type: "application/image")
   end
 
+  def log
+    logger.debug  Rails
+    respond_to do |format|
+      format.xml  { 
+        render :xml=>{:status=>response.status} 
+      }
+      format.json  { 
+        render :json=>{:status=>response.status}
+      }
+    end
+  end
+
+  def rails
+    #:application=>Rails::Application
+    ENV.each {|k,v| puts "key is #{k} ; value is #{v}"}
+    #puts ENV.values()
+    respond_to do |format|
+      format.xml  { 
+        render :xml=>{:rails_root=>Rails.root,:cache_classes=>Rails.configuration.cache_classes,:environments=>Rails.env,:env=>ENV["RAILS_ENV"]} 
+      }
+    end
+  end
+
+  def cache
+    Rails.cache.write('renren','bbc')
+    respond_to do |format|
+      format.json  { 
+        render :json=>{:rails_root=>Rails.root,:abc=>Rails.cache.read('renren')}
+      }
+    end
+  end
 
 end

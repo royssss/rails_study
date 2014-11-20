@@ -31,5 +31,12 @@ module RailsTestTwo
     #config.middleware.delete 'Rack::ConditionalGet'      # HTTP客户端缓存才会使用
     #config.middleware.delete 'Rack::ETag'    # HTTP客户端缓存才会使用
     config.middleware.delete 'ActionDispatch::BestStandardsSupport' # 设置X-UA-Compatible, 在nginx上设置
+
+
+    #rs add
+    #rails对log的支持有命令行，还可以写到文件里。默认是写到了文件里/log/development.log
+    #当然还可以用第三方的扩展比如，log4r！（没有配置明白怎么用）
+    #config.logger = Logger.new(STDOUT)
+
   end
 end

@@ -48,5 +48,7 @@ Rails.application.configure do
     authentication:       'plain',
     enable_starttls_auto: true  
   }
+  config.cache_store = :file_store, "#{Rails.root}/tmp/cache"
+  #config.cache_store = :memory_store
   
 end

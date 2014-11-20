@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   
   #post 'resp', to: 'welcome#resp',:defaults => { :format => 'xml' }
   get 'download_file'=>'welcome#download_file'
+  get 'log'=>'welcome#log'
+  get 'rails'=>'welcome#rails'
+  get 'cache'=>'welcome#cache'
 
 
   #namespace and auth 
