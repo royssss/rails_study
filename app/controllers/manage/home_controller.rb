@@ -7,4 +7,4 @@ class Manage::HomeController < Manage::AdminController
     end
   end
 
-end  
+end

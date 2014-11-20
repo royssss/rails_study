@@ -135,7 +135,17 @@ class WelcomeController < ApplicationController
       format.xml  { 
         render :xml=>{:status=>response.status} 
       }
+      format.json  { 
+        render :json=>{:status=>response.status}
+      }
     end
   end
+  
+  def download_file
+    send_file("#{Rails.root}/public/uploads/abc.jpg",
+              filename: "abc.jpg",
+              type: "application/image")
+  end
+
 
 end

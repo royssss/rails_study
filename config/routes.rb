@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :users
+
   root 'welcome#index'
   get 'json'=>'welcome#json',:defaults => { :format => 'json' }
   get 'runtime'=>'welcome#runtime',:defaults => { :format => 'json' }
@@ -10,12 +12,29 @@ Rails.application.routes.draw do
   get 'cookie'=>'welcome#cookie',:defaults => { :format => 'json' }
   get 'response_format'=>'welcome#response_format',:defaults => { :format => 'xml' }
   get 'req'=>'welcome#req',:defaults => { :format => 'xml' }
-  get 'resp'=>'welcome#resp',:defaults => { :format => 'xml' }
+
+
+
+  #用get方式请求 resp路由，路由这么写。
+  #via 指定http请求放方式；format指定返回格式（json，html，xml）
+  #get 'resp', to: 'welcome#resp',:defaults => { :format => 'xml' }
+  #match 'resp', to: 'welcome#response',:defaults => { :format => 'xml' },via: [:get]
+  #get 'resp'=>'welcome#resp',format: 'json'
+  #get 'resp'=>'welcome#resp',format: 'xml'
+  get 'resp'=>'welcome#resp'
+  
+  #post 'resp', to: 'welcome#resp',:defaults => { :format => 'xml' }
+  get 'download_file'=>'welcome#download_file'
+
+
+  #namespace and auth 
+  namespace :manage do
+    get 'home'=>'home#index',format: 'json'
+  end
   
 
-
-  resources :articles
-
+  ##########manage routes
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
