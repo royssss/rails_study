@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :users
+  get "album"=>'album#index'
+  get "get_image"=>'album#get_image',:defaults => { :format => 'json' }
 
   root 'welcome#index'
   get 'json'=>'welcome#json',:defaults => { :format => 'json' }
